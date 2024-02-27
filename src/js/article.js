@@ -30,5 +30,4 @@ document.addEventListener("DOMContentLoaded", async function(e) {
 	};
 });
 
-// const resourceLocation = "https://raw.githubusercontent.com/utcast/mf97-website/main/src/articles/";
-const resourceLocation = ""
+const resourceLocation = "https://raw.githubusercontent.com/utcast/mf97-website/compose/src/articles/";
