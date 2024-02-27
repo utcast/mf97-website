@@ -30,4 +30,5 @@ document.addEventListener("DOMContentLoaded", async function(e) {
 	};
 });
 
-const resourceLocation = "https://raw.githubusercontent.com/utcast/mf97-website/main/src/articles/";
+// const resourceLocation = "https://raw.githubusercontent.com/utcast/mf97-website/main/src/articles/";
+const resourceLocation = ""
