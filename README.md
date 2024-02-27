@@ -3,9 +3,9 @@
 
 ## サーバーの起動
 
-    ```shell
-	npm install -g superstatic
-    cd mf97-website/src/
-    superstatic "/"
-    ```
-    Visit http://localhost:3474 
+```shell
+npm install -g superstatic
+cd mf97-website/src/
+superstatic "/"
+```
+Visit http://localhost:3474 
