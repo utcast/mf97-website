@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", async function(e) {
 	// URLクエリから、表示する記事のnameを得る
 	const searchParams = new URLSearchParams(window.location.search);
 	const articleName = searchParams.get("name");
+	alert(articleName);
 	// nameが空欄の場合は、トップページに遷移
 	if (!articleName) {
 		// this.location.href = homepageURL;
@@ -30,4 +31,5 @@ document.addEventListener("DOMContentLoaded", async function(e) {
 	};
 });
 
-const resourceLocation = "https://raw.githubusercontent.com/utcast/mf97-website/compose/src/articles/";
+const resourceLocation = "https://raw.githubusercontent.com/utcast/mf97-website/compose/contents/articles/";
+
