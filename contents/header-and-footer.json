@@ -1,0 +1,78 @@
+{
+	"header": [
+		{
+			"text": "[企画紹介|きかくしょうかい]",
+			"href": "",
+			"dropdown": [
+				[
+					{
+						"text": "[気象|きしょう]ショー",
+						"href": "kishou"
+					}
+				],
+				[
+					{
+						"text": "[発光|はっこう]ブース",
+						"href": "hakkou"
+					},
+					{
+						"text": "[建築|けんちく]ブース",
+						"href": "kenchiku"
+					},
+					{
+						"text": "アルコールブース",
+						"href": "alcohol"
+					}
+				],
+				[
+					{
+						"text": "[工作教室|こうさくきょうしつ]",
+						"href": "atelier"
+					},
+					{
+						"text": "フォトスポット",
+						"href": "photo-spot"
+					}
+				]
+			]
+		},
+		{
+			"text": "タイムテーブル",
+			"href": "timetable"
+		},
+		{
+			"text": "アクセス",
+			"href": "access"
+		}
+	],
+	"footer": [
+		[
+			{
+				"text": "トップページ",
+				"href": ""
+			},
+			{
+				"text": "[企画紹介|きかくしょうかい]",
+				"href": "#企画紹介"
+			},
+			{
+				"text": "タイムテーブル",
+				"href": "timetable"
+			},
+			{
+				"text": "アクセス",
+				"href": "access"
+			}
+		],
+		[
+			{
+				"text": "[東大|とうだい]CASTホームページ",
+				"href": "https://ut-cast.net"
+			},
+			{
+				"text": "[五月祭|ごがつさい][公式|こうしき]サイト",
+				"href": "https://www.google.com/search?q=五月祭2024"
+			}
+		]
+	]
+}
