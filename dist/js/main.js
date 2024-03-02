@@ -1,15 +1,34 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+	// ヘッダー、フッターの内容を設定
 	makeHeaderAndFooter();
 
+	// URLクエリからpageを取得し、本文の内容を設定。
+	const page = (new URLSearchParams(window.location.search)).get("name");
+	const markdownLocation = page ? `${RESOURCE_TOP}/articles/${page}.md` : `${RESOURCE_TOP}/index.md`;
+	makeArticle(markdownLocation);
+
+});
+
+window.addEventListener("load", function () {
+
+	// 外部リンクが新規タブで開くように設定
+	makeExternalLinksOpenInNewTab();
+
+	// ふりがな指定
+	const furiganaSwitch = this.document.getElementById("furigana-switch");
+	furiganaSwitch.addEventListener("change", function(e) {
+		toggleRuby(e.target.checked);
+	});
+	toggleRuby(furiganaSwitch.checked);
 });
 
 /**
  * GitHubからheader.jsonを取得し、headerの内容を表示する。
  */
 const makeHeaderAndFooter = function () {
-	const headerContent = document.getElementById("header-content");
-	const footerContent = document.getElementById("footer-content");
+	const headerElement = document.getElementById("header-content");
+	const footerElement = document.getElementById("footer-content");
 	const request = new XMLHttpRequest();
 	request.open("GET", `${RESOURCE_TOP}/header-and-footer.json`);
 	request.send();
@@ -23,7 +42,7 @@ const makeHeaderAndFooter = function () {
 				headerHTML += `<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">${putRuby(item.text)}</a><ul class="dropdown-menu">`;
 				for (let i = 0; i < item.dropdown.length; i++) {
 					for (let exhibit of item.dropdown[i]) {
-						headerHTML += `<li><a class="dropdown-item" href="${SITE_TOP + exhibit.href}">${putRuby(exhibit.text)}</a></li>`;
+						headerHTML += `<li><a class="dropdown-item" href="${toFullURL(exhibit.href)}">${putRuby(exhibit.text)}</a></li>`;
 					}
 					if (i < item.dropdown.length - 1) {
 						headerHTML += `<li><hr class="dropdown-divider"></li>`;
@@ -31,38 +50,40 @@ const makeHeaderAndFooter = function () {
 				}
 				headerHTML += "</ul></li>";
 			} else {
-				headerHTML += `<li class="nav-item"><a class="nav-link" aria-current="page" href="${item.href}">${putRuby(item.text)}</a></li>`;
+				headerHTML += `<li class="nav-item"><a class="nav-link" aria-current="page" href="${toFullURL(item.href)}">${putRuby(item.text)}</a></li>`;
 			}
 		}
-		headerContent.innerHTML = headerHTML;
+		headerElement.innerHTML = headerHTML;
 
 		// Footer
 		let footerHTML = "";
 		const footerJSON = JSON.parse(request.responseText).footer;
 		for (let section of footerJSON) {
+			footerHTML += `<div class="col-8 col-sm-4 mb-3"><ul class="nav flex-column">`;
 			for (let item of section) {
-
+				footerHTML += `<li class="nav-item mb-2"><a href="${toFullURL(item.href)}" class="nav-link p-0 text-body-secondary">${putRuby(item.text)}</a></li>`;
 			}
+			footerHTML += `</ul></div>`;
 		}
+		footerElement.innerHTML = footerHTML;
 	};
-}
+};
 
 /**
- * GitHubからfooter.jsonを取得し、footerの内容を表示する。
+ * GitHubからMarkdownファイルを取得し、記事本文の内容を設定する。
+ * @param {string} markdownLocation 取得するMarkdownファイルのURL
  */
-const makeFooter = function () {
-	const footerSection1 = document.getElementById("footer-section1");
-	const footerSection2 = document.getElementById("footer-section2");
+const makeArticle = function (markdownLocation) {
+	const articleElement = document.getElementById("article");
 	const request = new XMLHttpRequest();
-	request.open("GET", `${RESOURCE_TOP}/header.json`);
+	request.open("GET", markdownLocation);
 	request.send();
 	request.onload = function () {
-		let innerHTML1 = "";
-		let innerHTML2 = "";
-		const footerJSON = JSON.parse(request.responseText);
-		
-	}
-}
+		// let articleHTML = mdToHTML(request.responseText);
+		// articleElement.innerHTML = articleHTML;
+		articleElement.innerText = request.responseText;
+	};
+};
 
 
 /**
@@ -97,4 +118,33 @@ const putRuby = function (inputText) {
 
 	return output;
 
+};
+
+/**
+ * CSS変数を制御することで、ルビの表示・非表示を切り替える。
+ * @param {boolean} on ルビを表示するときはtrue、そうでなければfalse
+ */
+const toggleRuby = function (on) {
+	const root = document.querySelector(":root");
+	if (on) {
+		// ルビを表示する
+		root.style.setProperty('--ruby-display', 'unset');
+		root.style.setProperty('--line-height-scale', "1.15");
+	} else {
+		// ルビを隠す
+		root.style.setProperty('--ruby-display', 'none');
+		root.style.setProperty('--line-height-scale', "1");
+	}
+};
+
+/**
+ * 「https://ut-cast.net/mayfes2024」以外で始まるリンクに target="_blank" を付与し、新規タブで開くようにする。
+ * （最後に呼び出す）
+ */
+const makeExternalLinksOpenInNewTab = function () {
+	for (let a of document.querySelectorAll("a")) {
+		if (a.href && !a.href.startsWith("https://ut-cast.net/mayfes2024")) {
+			a.target = "_blank";
+		}
+	}
 };
