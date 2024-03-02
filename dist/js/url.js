@@ -1,20 +1,29 @@
+/**
+ * 学園祭ページのURL、ただし最後の / は含めない。
+ * 例："https://ut-cast.net/mayfes2024"
+ */
 const SITE_TOP = "https://ut-cast.net/mayfes2024";
+
+/**
+ * GitHubのリソースの場所、ただし最後の / は含めない。
+ * 例："https://raw.githubusercontent.com/utcast/mf97-website/main/contents"
+ */
 const RESOURCE_TOP = "https://raw.githubusercontent.com/utcast/mf97-website/main/contents";
 
 /**
  * ルート相対パスを絶対パスに変換する。
- * urlが / で始まる場合　→　サイトトップをルートとして扱う
- * urlが contents/ で始まる場合　→ GitHubのcontentsをルートとして扱う
- * それ以外の場合はそのまま返す
+ * urlが / で始まる場合　→　GitHubのcontentsをルートとして扱う
+ * urlが http:// または https:// で始まる場合　→ そのまま返す
+ * それ以外の場合　→ "https://ut-cast.net/mayfes2024/?page=(url)"のように返す
  * @param {string} url 絶対パスもしくはルート相対パスのURL
  * @returns {string} 絶対パス
  */
-const toFullURL = function(url) {
+const toFullURL = function (url) {
 	if (url.startsWith("/")) {
-		return SITE_TOP + url;
+		return `${RESOURCE_TOP}${url}`;
+	} else if (url.startsWith("http://") || url.startsWith("https://")) {
+		return url;
+	} else {
+		return `${SITE_TOP}/?page=${url}`;
 	}
-	if (url.startsWith("contents/")) {
-		return RESOURCE_TOP + url;
-	}
-	return url;
 }
