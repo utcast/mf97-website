@@ -14,11 +14,31 @@ body {
 	font-family: "Zen Maru Gothic", sans-serif;
 }
 
+
+[data-ruby] {
+	position: relative;
+	display: inline-block;
+}
+
+[data-ruby]::before {
+	display: var(--ruby-display);
+	content: attr(data-ruby);
+	position: absolute;
+	top: -0.8em;
+	left: 0;
+	right: 0;
+	margin: auto;
+	font-size: 0.5em;
+	font-weight: bold;
+	text-align: center;
+	white-space: nowrap;
+}
+
 header {
 	flex-grow: 0;
 }
 
-article > h1 {
+article>h1 {
 	/* font-size: 36px; */
 	font-size: 2.25rem;
 	font-style: normal;
@@ -28,7 +48,7 @@ article > h1 {
 	line-height: calc(3.375rem * var(--line-height-scale));
 }
 
-article > h2 {
+article>h2 {
 	/* margin-top: 40px; */
 	margin-top: 2.5rem;
 	/* font-size: 24px; */
@@ -38,7 +58,7 @@ article > h2 {
 	line-height: calc(2.25rem * var(--line-height-scale));
 }
 
-article > h3 {
+article>h3 {
 	/* margin-top: 28px; */
 	margin-top: 1.75rem;
 	/* font-size: 20px; */
@@ -56,6 +76,12 @@ article > p {
 	text-align: justify;
 }
 
+article span {
+	&[data-ruby]::before {
+		top: -1.6em;
+	}
+}
+
 .carousel {
 	max-width: 38.832rem;
 	max-height: 24rem;
@@ -69,7 +95,7 @@ article .picture-frame {
 	padding: 1rem 0;
 }
 
-.picture-frame > p {
+.picture-frame>p {
 	font-size: 0.875rem;
 	font-style: normal;
 	font-weight: 700;
@@ -79,23 +105,4 @@ article .picture-frame {
 article .picture {
 	aspect-ratio: 1.618;
 	max-height: 24rem;
-}
-
-[data-ruby] {
-	position: relative;
-	display: inline-block;
-}
-
-[data-ruby]::before {
-	display: var(--ruby-display);
-	content: attr(data-ruby);
-	position: absolute;
-	top: -0.9em;
-	left: 0;
-	right: 0;
-	margin: auto;
-	font-size: 0.5em;
-	font-weight: bold;
-	text-align: center;
-	white-space: nowrap;
 }

@@ -11,12 +11,12 @@ const SITE_TOP = "https://ut-cast.net/mayfes2024";
 const RESOURCE_TOP = "https://raw.githubusercontent.com/utcast/mf97-website/main/contents";
 
 /**
- * ルート相対パスを絶対パスに変換する。
+ * ルート相対パスを正しく作動するURLに変換する。
  * urlが / で始まる場合　→　GitHubのcontentsをルートとして扱う
  * urlが http:// または https:// で始まる場合　→ そのまま返す
- * それ以外の場合　→ "https://ut-cast.net/mayfes2024/?page=(url)"のように返す
+ * それ以外の場合　→ "?page=(url)"の形に変換する。
  * @param {string} url 絶対パスもしくはルート相対パスのURL
- * @returns {string} 絶対パス
+ * @returns {string} 正しく作動するURL
  */
 const toFullURL = function (url) {
 	if (url.startsWith("/")) {
@@ -24,6 +24,6 @@ const toFullURL = function (url) {
 	} else if (url.startsWith("http://") || url.startsWith("https://")) {
 		return url;
 	} else {
-		return `${SITE_TOP}/?page=${url}`;
+		return `?page=${url}`;
 	}
 }

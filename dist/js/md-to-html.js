@@ -3,209 +3,234 @@
  */
 
 /**
- * 企画の種類
- */
-const typeTemplates = {
-	booth: {
-		ja: "ブース発表",
-		en: "Booth Exhibit"
-	},
-	show: {
-		ja: "サイエンスショー",
-		en: "Science Show"
-	},
-	atelier: {
-		ja: "科学工作（アトリエ）",
-		en: "Craft Workshop"
-	},
-	other: {
-		// サブ企画
-		ja: "その他の企画",
-		en: "Mini Exhibits"
-	},
-	atricle: {
-		// 企画紹介以外の記事
-		ja: "",
-		en: ""
-	}
-};
-
-/**
- * 開催時間の種類
- */
-const timeTemplates = {
-	always: {
-		ja: "常時開催",
-		en: "Always Open"
-	},
-	scheduled: {
-		ja: "タイムテーブル",
-		en: "See Timetable"
-	}
-};
-
-/**
- * 会場の呼び方
- */
-const placeTemplate = {
-	ja: place => place + "教室",
-	en: place => "Room " + place
-};
-
-/**
- * ルート相対パスの
- * @param {string} relativeURL ルート相対パスのURL
- */
-const resolveRelativeURL = function(relativeURL) {
-	if (relativeURL.startsWith("/articles/")) {
-		return relativeURL;
-	} else if (relativeURL.startsWith("/img/")) {
-		return relativeURL;
-	}
-	return relativeURL;
-};
-
-/**
  * MDテキストをHTMLに変換
  * @param {string} md MDフォーマットの文字列
- * @returns {{title: string, article: string}} articleは、articleのinnerHTMLにそのまま設定できる文字列。
+ * @returns {{article: string, mokuji: string}} それぞれのinnerHTMLを返す。
  */
-const mdToHTML = function(md) {
-
-	const attrs = {
-		lang: "ja",
-		title: "",
-		type: "",
-		time: "",
-		place: ""
-	};
+const mdToHTML = function (md) {
 
 	/**
-	 * ページトップのスライドショーに表示する画像の {url, alt} のリスト
-	 * @type {Array<{url: string, alt: string}>}
+	 * 最終的に生成されるHTMLテキスト（articleのinnerHTMLに相当）
 	 */
-	const slideShow = [];
+	let articleHTML = "";
 
 	/**
-	 * 最終的に生成されるHTMLファイル（articleのinnerHTMLに相当）
+	 * 目次のHTMLテキスト（H1~H3までを記録）
 	 */
-	let generatedHTML = "";
+	let mokujiHTML = "";
 
+	/**
+	 * 直前の行の内容（カルーセル、箇条書き、画像、など。）
+	 */
+	let objectAhead = "";
 
-	// まずFormatter部分を解読する。
-	const formatterLines = md.split("---")[1].split("\n");
+	/**
+	 * 直前の見出しの階層。
+	 * H1は記事に1つとし、目次には含めない。
+	 */
+	let previousHeadingLevel = 1;
 
-	for (let line of formatterLines) {
-		if (line == "---") {
-			break;
-		} else if (line.startsWith("lang: ")) {
-			attrs.lang = line.substring(line.indexOf('"') + 1, line.lastIndexOf('"'));
-		} else if (line.startsWith("name: ")) {
-			attrs.title = line.substring(line.indexOf('"') + 1, line.lastIndexOf('"'));
-		} else if (line.startsWith("type: ")) {
-			attrs.type = line.substring(line.indexOf('"') + 1, line.lastIndexOf('"'));
-		} else if (line.startsWith("time: ")) {
-			attrs.time = line.substring(line.indexOf('"') + 1, line.lastIndexOf('"'));
-		} else if (line.startsWith("place: ")) {
-			attrs.place = line.substring(line.indexOf('"') + 1, line.lastIndexOf('"'));
-		} else if (line.startsWith("image")) {
-			slideShow.push({
-				url: line.substring(line.indexOf('"') + 1, line.lastIndexOf('"')),
-				alt: ""
-			});
-		} else if (line.startsWith("alt")) {
-			if (slideShow.length > 0) {
-				slideShow[slideShow.length - 1].alt = line.substring(line.indexOf('"') + 1, line.lastIndexOf('"'));
+	/**
+	 * 直前にある<p>, 画像（のキャプション）, <carousel>, <ul>, <ol> を閉じる処理
+	 * @param {string} objAhead 
+	 */
+	const closePrevious = function () {
+		if (objectAhead == "") {
+			return;
+		}
+
+		// <p>を閉じる
+		if (objectAhead == "p") {
+			articleHTML += "</p>";
+		}
+
+		// <img>のキャプションを閉じる
+		else if (objectAhead == "img") {
+			articleHTML += "</p></div>";
+		}
+
+		// carouselを閉じる
+		else if (objectAhead == "carousel") {
+			articleHTML += '</div><button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">前の画像</span></button><button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">次の画像</span></button></div>';
+		}
+
+		// <ul>を閉じる
+		else if (objectAhead == "ul") {
+			articleHTML += "</ul>";
+		}
+
+		// <ol>を閉じる
+		else if (objectAhead == "ol") {
+			articleHTML += "</ol>";
+		}
+
+		objectAhead = "";
+	}
+
+	/**
+	 * 目次が適宜入れ子になるようにする。
+	 */
+	const makeMokuji = function (toHeadingLevel) {
+
+		if (previousHeadingLevel < toHeadingLevel) {
+			for (let i = 0; i < toHeadingLevel - previousHeadingLevel; i++) {
+				mokujiHTML += '<nav class="nav nav-pills flex-column ps-3">';
+			}
+		} else if (previousHeadingLevel > toHeadingLevel) {
+			for (let i = 0; i < previousHeadingLevel - toHeadingLevel; i++) {
+				mokujiHTML += '</nav>';
 			}
 		}
+		previousHeadingLevel = toHeadingLevel;
+
 	}
 
-
-	// 記事のタイトルを追加する
-	generatedHTML = '<div class="page-heading">';
-	if (attrs.type != "article") {
-		generatedHTML += `<p>${typeTemplates[attrs.type][attrs.lang]}</p>`;
-	}
-	generatedHTML += `<h1>${putRuby(removeUnintendedHTMLTags(attrs.title))}</h1></div>`;
-
-	// チップを追加する
-	if (attrs.type != "article") {
-		generatedHTML += `<div class="chip-container"><div class="chip">${timeTemplates[attrs.time][attrs.lang]}</div><div class="chip">${placeTemplate[attrs.lang](attrs.place)}</div></div>`;
-	}
-
-	// スライドショーを追加する
-	if (slideShow.length > 0) {
-		generatedHTML += '<div class="slide-show">';
-		slideShow.forEach(image => {
-			generatedHTML += `<img src="${image.url}" alt="${image.alt}">`;
-		});
-		generatedHTML += '</div>';
-	}
-
-	// 次に本文を解読する。１つだけの改行記号はスペースに変換する。
-	const articleLines = md.split("---")[2].split(/\n{2,}/).map(line => line.replaceAll("\n", " "));
-	articleLines.shift(); // 配列の最初に "" が入ってしまうのを防ぐ
-
-	// 箇条書き、数字リストのフラグ
-	let ulFlag, olFlag;
+	const articleLines = md.split("\n");
 
 	for (let line of articleLines) {
 
-		if (line.startsWith("* ")) {
-			// ul
-			if (!ulFlag) {
-				generatedHTML += "<ul>"
-				ulFlag = true;
+		console.log(articleHTML);
+		console.log(`- ${objectAhead}`);
+		console.log(`+ ${line}`);
+
+		// 「```」〜「```」まではrawHTMLと解釈する。
+		if (line == "```") {
+			if (objectAhead == "rawHTML") {
+				objectAhead = "";
+			} else {
+				closePrevious();
+				objectAhead = "rawHTML";
 			}
-			generatedHTML += `<li>${insertHyperlink(putRuby(removeUnintendedHTMLTags(line.substring(line.indexOf(" ")))))}</li>`;
 			continue;
-		} else {
-			if (ulFlag) {
-				generatedHTML += "</ul>";
-				ulFlag = false;
-			}
 		}
 
-		if (line.startsWith("1. ")) {
-			// ol
-			if (!olFlag) {
-				generatedHTML += "<ol>"
-				olFlag = true;
-			}
-			generatedHTML += `<li>${insertHyperlink(putRuby(removeUnintendedHTMLTags(line.substring(line.indexOf(" ")))))}</li>`;
+		// rawHTMLの中身は何も解釈せず、そのまま追加する。
+		if (objectAhead == "rawHTML") {
+			articleHTML += line;
 			continue;
-		} else {
-			if (olFlag) {
-				generatedHTML += "</ol>";
-				olFlag = false;
-			}
 		}
 
+		// 空白行 → <p>, <img>のキャプション, <carousel>, <ul>, <ol> を閉じる処理
+		if (line == "") {
+			closePrevious();
+			continue;
+		}
+
+		// 本文は、タイトルから解読する。タイトルの直後にある一連の画像はカルーセルにする。H1は記事に一つとし、目次には含めない。
+		if (line.startsWith("# ")) {
+
+			// 記事について
+			closePrevious();
+			let title = removeUnintendedHTMLTags(line.substring(2));
+			articleHTML += `<h1>${insertHyperlink(putRuby(title))}</h1>`;
+			objectAhead = "h1";
+
+			continue;
+		}
+
+		// H2を解釈する。
 		if (line.startsWith("## ")) {
-			// H2
-			generatedHTML += `<h2>${insertHyperlink(putRuby(removeUnintendedHTMLTags(line.substring(line.indexOf(" ")))))}</h2>`;
-		} else if (line.startsWith("### ")) {
-			// H3
-			generatedHTML += `<h3>${insertHyperlink(putRuby(removeUnintendedHTMLTags(line.substring(line.indexOf(" ")))))}</h3>`;
-		} else if (line.startsWith("#### ")) {
-			// H4
-			generatedHTML += `<h4>${insertHyperlink(putRuby(removeUnintendedHTMLTags(line.substring(line.indexOf(" ")))))}</h4>`;
-		} else if (/!\[.+?\]\(.+?\)/.test(line)) {
-			// 画像
-			let imageTitle = line.substring(line.indexOf("![") + 2, line.lastIndexOf("]("));
-			let imageSrc = line.substring(line.lastIndexOf("](") + 2, line.lastIndexOf(")"));
-			generatedHTML += `<div class="image-with-title"><img src="${imageSrc}"><p>${insertHyperlink(putRuby(removeUnintendedHTMLTags(imageTitle)))}</p></div>`;
-		} else {
-			// 本文
-			generatedHTML += `<p>${insertHyperlink(putRuby(removeUnintendedHTMLTags(line)))}</p>`;
+
+			// 記事について
+			closePrevious();
+			let title = removeUnintendedHTMLTags(line.substring(3));
+			let anchor = removeRuby(title);
+			articleHTML += `<h2 id="${anchor}">${insertHyperlink(putRuby(title))}</h2>`;
+			objectAhead = "h2";
+
+			// 目次について
+			makeMokuji(2);
+			mokujiHTML += `<a class="nav-link ms-3 my-1" href="#${anchor}">${putRuby(title)}</a>`;
+
+			continue;
 		}
+
+		// H3を解釈する。
+		if (line.startsWith("### ")) {
+
+			// 記事について
+			closePrevious();
+			let title = removeUnintendedHTMLTags(line.substring(4));
+			let anchor = removeRuby(title);
+			articleHTML += `<h3 id="${anchor}">${insertHyperlink(putRuby(title))}</h3>`;
+			objectAhead = "h3";
+
+			// 目次について
+			makeMokuji(3);
+			mokujiHTML += `<a class="nav-link ms-3 my-1" href="#${anchor}">${putRuby(title)}</a>`;
+
+			continue;
+		}
+
+		// 画像を解釈する。（画像は単体で１行におく。）
+		if (/^!\[.+?\]\(.+?\)$/.test(line)) {
+			let imageAlt = line.substring(line.indexOf("![") + 2, line.lastIndexOf("]("));
+			let imageSrc = line.substring(line.lastIndexOf("](") + 2, line.lastIndexOf(")"));
+
+			// h1の直後にある時は、carouselを追加
+			if (objectAhead == "h1") {
+				// カルーセルを開く
+				articleHTML += '<div id="carouselExampleAutoplaying" class="carousel slide user-select-none" data-bs-ride="carousel"><div class="carousel-inner">';
+				objectAhead = "carousel";
+			}
+			// carouselに画像を追加
+			if (objectAhead == "carousel") {
+				// カルーセルに画像を追加する
+				articleHTML += `<div class="carousel-item active"><img src="${toFullURL(imageSrc)}" class="d-block w-100" alt="${imageAlt}"></div>`;
+				continue;
+			}
+
+			// objectAheadがh1, carousel以外のときは、closePrevious()をしてから通常の画像を追加
+			closePrevious();
+			articleHTML += `<div class="picture-frame"><div class="picture" style="background: center / contain no-repeat url('${toFullURL(imageSrc)}') , #CCC;"></div><p>`;
+			objectAhead = "img";
+			continue;
+		}
+
+		// 箇条書きを追加する。
+		if (line.startsWith("* ") || line.startsWith("- ") || line.startsWith("+ ")) {
+			if (!objectAhead == "ul") {
+				closePrevious();
+				articleHTML += `<ul>`;
+				objectAhead = "ul";
+			}
+			articleHTML += `<li>${insertHyperlink(putRuby(removeUnintendedHTMLTags(line.substring(2))))}</li>`;
+			continue;
+		}
+
+		// 番号付きリストを追加する。
+		if (/^[0-9]+\. .*/.test(line)) {
+			if (!objectAhead == "ol") {
+				closePrevious();
+				articleHTML += `<ol>`;
+				objectAhead = "ol";
+			}
+			articleHTML += `<ol>${insertHyperlink(putRuby(removeUnintendedHTMLTags(line.substring(line.indexOf(" " + 1)))))}</ol>`;
+			continue;
+		}
+
+		// ただの段落を追加する。直前のオブジェクトが画像の時は、そのラベルとして入れる。
+		if (objectAhead == "img" || objectAhead == "p") {
+			articleHTML += `${insertHyperlink(putRuby(removeUnintendedHTMLTags(line)))}`;
+			continue;
+		} else {
+			closePrevious();
+			articleHTML += `<p>${insertHyperlink(putRuby(removeUnintendedHTMLTags(line)))}`;
+			objectAhead = "p";
+		}
+
 	}
 
-	return {
-		title: removeRuby(attrs.title),
-		article: generatedHTML
-	};
+	// 文末の処理
+	closePrevious();
 
+	// 目次の終わりの処理
+	makeMokuji(1);
+
+	return {
+		article: articleHTML,
+		mokuji: mokujiHTML
+	};
 };
 
 /**
@@ -213,7 +238,7 @@ const mdToHTML = function(md) {
  * @param {*} str 
  * @returns {string}
  */
-const removeUnintendedHTMLTags = function(str) {
+const removeUnintendedHTMLTags = function (str) {
 	return str.split("<br>").map(line => line.replaceAll("<", "&lt;").replaceAll(">", "&gt;")).join("<br>");
 };
 
@@ -222,7 +247,7 @@ const removeUnintendedHTMLTags = function(str) {
  * @param {string} inputText [漢字|ふりがな]が含まれるテキスト
  * @returns {string} <span data-ruby="ふりがな">漢字</span>が含まれるテキスト
  */
-const putRuby = function(inputText) {
+const putRuby = function (inputText) {
 
 	// ["["を除く任意の文字列|任意の文字列]の最短一致
 	const rubySearch = /\[[^\[]+?\|.+?\]/g;
@@ -258,7 +283,7 @@ const putRuby = function(inputText) {
  * @param {string} md [リンクタイトル](URL)を含む文字列
  * @returns {string} <a href="URL">リンクタイトル</a>を含む文字列
  */
-const insertHyperlink = function(inputText) {
+const insertHyperlink = function (inputText) {
 
 	// [任意の文字列](任意の文字列)の最短一致
 	const linkSearch = /\[.+?\]\(.+?\)/g;
@@ -274,12 +299,12 @@ const insertHyperlink = function(inputText) {
 
 	// 返す文字列
 	let output = "";
-	for (let i = 0; i <  linkTextArray.length; i++) {
+	for (let i = 0; i < linkTextArray.length; i++) {
 		let linkText = linkTextArray[i];
 		let splitIndex = linkText.lastIndexOf("](");
 		let linkTitle = linkText.substring(1, splitIndex);
 		let linkURL = linkText.substring(splitIndex + 2, linkText.length - 1);
-		output += `${baseTextArray[i]}<a href="${resolveRelativeURL(linkURL)}">${linkTitle}</a>`;
+		output += `${baseTextArray[i]}<a href="${toFullURL(linkURL)}">${linkTitle}</a>`;
 	}
 	output += baseTextArray[baseTextArray.length - 1];
 
@@ -292,7 +317,7 @@ const insertHyperlink = function(inputText) {
  * @param {string} inputText [漢字|ふりがな]が含まれるテキスト
  * @returns {string} 漢字が含まれるテキスト
  */
-const removeRuby = function(inputText) {
+const removeRuby = function (inputText) {
 
 	// ["["を除く任意の文字列|任意の文字列]の最短一致
 	const rubySearch = /\[[^\[]+?\|.+?\]/g;

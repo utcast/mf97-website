@@ -4,8 +4,13 @@ document.addEventListener("DOMContentLoaded", function () {
 	makeHeaderAndFooter();
 
 	// URLクエリからpageを取得し、本文の内容を設定。
-	const page = (new URLSearchParams(window.location.search)).get("name");
-	const markdownLocation = page ? `${RESOURCE_TOP}/articles/${page}.md` : `${RESOURCE_TOP}/index.md`;
+	const page = (new URLSearchParams(window.location.search)).get("page");
+	let markdownLocation;
+	if (!page || page == "index") {
+		markdownLocation = `${RESOURCE_TOP}/index.md`;
+	} else {
+		markdownLocation = `${RESOURCE_TOP}/articles/${page}.md`;
+	}
 	makeArticle(markdownLocation);
 
 });
@@ -75,50 +80,18 @@ const makeHeaderAndFooter = function () {
  */
 const makeArticle = function (markdownLocation) {
 	const articleElement = document.getElementById("article");
+	const mokujiElement = document.getElementById("mokuji");
 	const request = new XMLHttpRequest();
 	request.open("GET", markdownLocation);
 	request.send();
 	request.onload = function () {
-		// let articleHTML = mdToHTML(request.responseText);
-		// articleElement.innerHTML = articleHTML;
-		articleElement.innerText = request.responseText;
+		let html = mdToHTML(request.responseText);
+		articleElement.innerHTML = html.article;
+		mokujiElement.innerHTML = html.mokuji;
 	};
 };
 
 
-/**
- * 振り仮名を表記したMDをHTML記法に変換する
- * @param {string} inputText [漢字|ふりがな]が含まれるテキスト
- * @returns {string} <span data-ruby="ふりがな">漢字</span>が含まれるテキスト
- */
-const putRuby = function (inputText) {
-
-	// ["["を除く任意の文字列|任意の文字列]の最短一致
-	const rubySearch = /\[[^\[]+?\|.+?\]/g;
-
-	// 正規表現でSplitした配列（前後の空文字も含む）
-	let baseTextArray = inputText.split(rubySearch, -1);
-	// 正規表現にMatchした文字列
-	let rubyTextArray = inputText.match(rubySearch);
-
-	if (!rubyTextArray) {
-		return inputText;
-	}
-
-	// 返す文字列
-	let output = "";
-	for (let i = 0; i < rubyTextArray.length; i++) {
-		let rubyText = rubyTextArray[i];
-		let splitIndex = rubyText.lastIndexOf("|");
-		let ruby_kanji = rubyText.substring(1, splitIndex);
-		let ruby_kana = rubyText.substring(splitIndex + 1, rubyText.length - 1);
-		output += `${baseTextArray[i]}<span data-ruby="${ruby_kana}">${ruby_kanji}</span>`;
-	}
-	output += baseTextArray[baseTextArray.length - 1];
-
-	return output;
-
-};
 
 /**
  * CSS変数を制御することで、ルビの表示・非表示を切り替える。
@@ -143,7 +116,7 @@ const toggleRuby = function (on) {
  */
 const makeExternalLinksOpenInNewTab = function () {
 	for (let a of document.querySelectorAll("a")) {
-		if (a.href && !a.href.startsWith("https://ut-cast.net/mayfes2024")) {
+		if (a.href.startsWith("http") && !a.href.startsWith("https://ut-cast.net/mayfes2024")) {
 			a.target = "_blank";
 		}
 	}
