@@ -28,5 +28,5 @@ https://docs.google.com/document/d/1GXvp3zUu9v38bjKGT2gUDsh63UoUOskJtCZ211bQpQc/
 
 ## GitHubに反映させる
 1. VS Codeでコミット操作をすると、`compose`ブランチに反映されます。
-2. 時間差で、 [ここ]() に反映されます。
+2. 時間差で、 [ここ](https://utcast.github.io/mf97-website/test/) に反映されます。
 3. 校正が通ったら、`compose`ブランチを`main`ブランチにmergeします。
