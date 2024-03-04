@@ -13,12 +13,17 @@
 	<!-- CSS, JS -->
 	<link rel="stylesheet" href="./css/master.css">
 	<script src="./js/url.js"></script>
-
+	<script src="./js/md-to-html.js"></script>
 	<script src="./js/main.js"></script>
-	<!-- <script src="./js/article.js"></script> -->
 
 	<!-- favicon関連の設定 -->
-
+	<link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./icons/favicon-16x16.png">
+	<link rel="manifest" href="./icons/site.webmanifest">
+	<link rel="mask-icon" href="./icons/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#ffc40d">
+	<meta name="theme-color" content="#ffffff">
 
 	<!-- OGP設定 -->
 	<meta property="og:title" content="東大CAST 五月祭特設サイト" />
@@ -38,18 +43,17 @@
 	<meta property="og:locale" content="ja_JP" />
 	<meta name="”description”" content="東大サイエンスコミュニケーションサークルCASTは五月祭2024で、間近で実験を楽しめるブース、迫力あるサイエンスショー、そしてアイデア溢れる工作教室を行います。２つの会場でぜひお楽しみください。" />
 
-
 </head>
 
 <body>
 
 	<header>
-		<nav class="navbar navbar-expand-md bg-white">
+		<nav class="navbar navbar-expand-md bg-white user-select-none">
 			<div class="container-fluid">
 				<!-- 左上のタイトル文字 -->
-				<a class="navbar-brand align-items-end" href="">
-					<img src="./cast.gif" alt="CAST" width="86" height="36" class="d-inline-block">
-					<span class="align-bottom"><span data-ruby="ごがつさい">五月祭</span>2024</span>
+				<a class="navbar-brand align-items-end" href="?page=index">
+					<img src="./icons/cast.gif" alt="東大CAST" width="86" height="36" class="d-inline-block">
+					<span class="align-bottom"><span data-ruby="ご">五</span><span data-ruby="がつ">月</span><span data-ruby="さい">祭</span>2024</span>
 				</a>
 
 				<!-- トグルアイコン -->
@@ -76,9 +80,9 @@
 		</nav>
 	</header>
 
-	<main class="overflow-scroll ">
+	<main data-bs-spy="scroll" data-bs-target="#mokuji" data-bs-smooth-scroll="true" class="overflow-y-scroll overflow-x-hidden">
 
-		<div class="container-fluid text-center row justify-content-md-center">
+		<div class="container-fluid text-center row justify-content-md-center m-2">
 
 			<!-- ふりがなスイッチ -->
 			<div class="text-end user-select-none m-2">
@@ -92,17 +96,23 @@
 			<article id="article" class="text-start col-md-8 p-4"></article>
 
 			<!-- 記事の目次 -->
-			<div class="d-none d-md-block col-md-auto p-4 z-0">
-				<div id="mokuji" class="sticky-top"></div>
+			<div class="d-none d-md-block col-md-3 p-4 z-0 user-select-none">
+				<div class="sticky-top">
+					<nav id="mokuji" class="h-100 flex-column align-items-stretch text-start">
+						
+					</nav>
+				</div>
 			</div>
 
 		</div>
 
 		<div class="container-fluid bg-body-secondary">
-			<footer class="py-5 container">
+			<footer class="py-5 container user-select-none">
 
+				<!-- フッターの本体 -->
 				<div id="footer-content" class="row"></div>
 
+				<!-- 各種SNS -->
 				<div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
 					<p>&copy; 2024 <span data-ruby="とうきょうだいがく">東京大学</span>サイエンスコミュニケーションサークルCAST</p>
 					<ul class="list-unstyled d-flex">
