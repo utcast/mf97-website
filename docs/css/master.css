@@ -87,6 +87,7 @@ article span {
 	max-height: 24rem;
 	margin: 1rem auto;
 	background-color: #ccc;
+	overflow: hidden;
 }
 
 article .picture-frame {
