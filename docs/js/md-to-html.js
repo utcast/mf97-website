@@ -89,10 +89,6 @@ const mdToHTML = function (md) {
 
 	for (let line of articleLines) {
 
-		console.log(articleHTML);
-		console.log(`- ${objectAhead}`);
-		console.log(`+ ${line}`);
-
 		// 「```」〜「```」まではrawHTMLと解釈する。
 		if (line == "```") {
 			if (objectAhead == "rawHTML") {
