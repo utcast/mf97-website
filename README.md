@@ -13,7 +13,7 @@
 3. 拡張機能「[EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)」、「[Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)」をインストールする。
 
 ## 書き方
-https://docs.google.com/document/d/1GXvp3zUu9v38bjKGT2gUDsh63UoUOskJtCZ211bQpQc/edit
+[CAST Wiki/五月祭2024/ウェブサイト](https://wiki.utcast-mate.com/index.php?title=%E4%BA%94%E6%9C%88%E7%A5%AD2024/%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88)
 を参照してください。CASTのGoogleアカウントから閲覧できます。
 
 ## エディター
