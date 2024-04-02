@@ -2,13 +2,13 @@
  * 学園祭ページのURL、ただし最後の / は含めない。
  * 例："https://ut-cast.net/mayfes2024"
  */
-const SITE_TOP = "https://ut-cast.net/mayfes2024";
+const SITE_TOP = "https://ut-cast.net/mayfes2024/en";
 
 /**
  * GitHubのリソースの場所、ただし最後の / は含めない。
- * 例："https://raw.githubusercontent.com/utcast/mf97-website/compose/contents"
+ * 例："https://raw.githubusercontent.com/utcast/mf97-website/main/contents-en"
  */
-const RESOURCE_TOP = "../contents";
+const RESOURCE_TOP = "https://raw.githubusercontent.com/utcast/mf97-website/main/contents-en";
 
 /**
  * ルート相対パスを正しく作動するURLに変換する。

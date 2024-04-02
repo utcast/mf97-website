@@ -7,17 +7,17 @@
 				[
 					{
 						"text": "[気象|きしょう]ショー",
-						"href": "kishou"
+						"href": "weather"
 					}
 				],
 				[
 					{
-						"text": "[発光|はっこう]ブース",
-						"href": "hakkou"
+						"text": "[灯|あか]りブース",
+						"href": "light"
 					},
 					{
 						"text": "[建築|けんちく]ブース",
-						"href": "kenchiku"
+						"href": "architecture"
 					},
 					{
 						"text": "アルコールブース",
@@ -26,7 +26,7 @@
 				],
 				[
 					{
-						"text": "[工作教室|こうさくきょうしつ]",
+						"text": "アトリエ（[工作教室|こうさくきょうしつ]）",
 						"href": "atelier"
 					},
 					{

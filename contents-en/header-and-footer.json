@@ -1,0 +1,78 @@
+{
+	"header": [
+		{
+			"text": "Exhibitions",
+			"href": "",
+			"dropdown": [
+				[
+					{
+						"text": "Weather show",
+						"href": "weather"
+					}
+				],
+				[
+					{
+						"text": "Light booth",
+						"href": "light"
+					},
+					{
+						"text": "Architecture booth",
+						"href": "architecture"
+					},
+					{
+						"text": "Alcohol booth",
+						"href": "alcohol"
+					}
+				],
+				[
+					{
+						"text": "Science crafts workshop",
+						"href": "atelier"
+					},
+					{
+						"text": "Photo spot",
+						"href": "photo-spot"
+					}
+				]
+			]
+		},
+		{
+			"text": "Timetable",
+			"href": "timetable"
+		},
+		{
+			"text": "Access",
+			"href": "access"
+		}
+	],
+	"footer": [
+		[
+			{
+				"text": "Home",
+				"href": ""
+			},
+			{
+				"text": "Exhibits",
+				"href": "?page=index#Exhibits"
+			},
+			{
+				"text": "Timetable",
+				"href": "timetable"
+			},
+			{
+				"text": "Access",
+				"href": "access"
+			}
+		],
+		[
+			{
+				"text": "Univ. of Tokyo CAST official webiste (Japanese)",
+				"href": "https://ut-cast.net"
+			},
+			{
+				"text": "MayFes 2024 official website",
+				"href": "https://www.google.com/search?q=五月祭2024"
+			}
+		]
+	]
+}
