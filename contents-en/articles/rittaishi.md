@@ -1,5 +1,4 @@
 # Pictures appear to jump out! The wonders of stereoscopic vision!
-
 ![The stereoscopic view booth](/img/rittaishi/top1.jpg)
 ![Experiment of stereoscopic illusion](/img/rittaishi/top2.jpg)
 ![Experiment of binocular disparity](/img/rittaishi/top3.jpg)
