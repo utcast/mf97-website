@@ -1,13 +1,13 @@
 {
 	"show": [
 		{
-			"id": "kishou",
+			"id": "weather",
 			"name": "[気象|きしょう]ショー",
 			"catch": "[風|かぜ]を[感|かん]じて！[空|そら]を[見上|みあ]げて！[気象|きしょう]のしくみショー",
 			"type": "サイエンスショー",
 			"place": "show",
 			"image": {
-				"url": "contents/img/kishou/img1.jpg",
+				"url": "contents/img/weather/img1.jpg",
 				"alt": "竜巻発生装置の実験の様子"
 			}
 		}
