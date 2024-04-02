@@ -7,7 +7,7 @@
 				[
 					{
 						"text": "[気象|きしょう]ショー",
-						"href": "kishou"
+						"href": "weather"
 					}
 				],
 				[
@@ -17,7 +17,7 @@
 					},
 					{
 						"text": "[建築|けんちく]ブース",
-						"href": "kenchiku"
+						"href": "architecture"
 					},
 					{
 						"text": "アルコールブース",
