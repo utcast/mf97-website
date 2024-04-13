@@ -1,0 +1,37 @@
+{
+	"sponsors": [
+		{
+			"name": "東大CAST",
+			"url": "https://ut-cast.net/",
+			"image": "/img/sponsors/utcast.gif"
+		},
+		{
+			"name": "立体視ブース",
+			"url": "https://ut-cast.net/komafes2022/project/stereo/",
+			"image": "/img/sponsors/rittaishi.jpg"
+		},
+		{
+			"name": "光と波ブース",
+			"url": "https://ut-cast.net/komafes2022/project/light/",
+			"image": "/img/sponsors/hikari-to-nami.jpg"
+		},
+		{
+			"name": "鑑定ブース",
+			"url": "https://ut-cast.net/komafes2022/project/appraisal/",
+			"image": "/img/sponsors/kantei.jpg"
+		},
+		{
+			"name": "薬と毒ブース",
+			"url": "https://ut-cast.net/komafes2022/project/medi_poi/",
+			"image": "/img/sponsors/kusuri-to-doku.jpg"
+		},
+		{
+			"name": "雷ショー",
+			"url": "https://ut-cast.net/komafes2022/project/thunder/"
+		},
+		{
+			"name": "雪ショー",
+			"url": "https://ut-cast.net/komafes2022/project/snow/"
+		}
+	]
+}
