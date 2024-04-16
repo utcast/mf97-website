@@ -10,14 +10,23 @@
 
 ## [企画紹介|きかくしょうかい]
 
-```
-<div class="d-flex flex-wrap my-2">
-	<a class="card col-12 col-sm-6 col-xl-4 p-2" href="#">
-		<img src="" class="card-img-top" alt="...">
-		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		</div>
-	</a>
-</div>
-```
+---
+[title](rittaishi)
+![立体視ブースのカバー画像](/img/sponsors/rittaishi.jpg)
+## [立体視|りったいし]ブース
+[立体視|りったいし]のしくみについて[探|さぐ]りましょう。
+---
+---
+[title](alcohol)
+![アルコールブースのカバー画像](/img/sponsors/rittaishi.jpg)
+## アルコールブース
+アルコールの[秘密|ひみつ]に[迫|せま]ります！
+---
+
+## アクセス
+
+---
+[title](access)
+![立体視ブースのカバー画像](/img/sponsors/rittaishi.jpg)
+## アクセス
+[会場|かいじょう]までの[行|い]き[方|かた]はこちら。
