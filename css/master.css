@@ -82,6 +82,10 @@ article span {
 	}
 }
 
+article iframe {
+	width: 100%;
+}
+
 .carousel {
 	max-width: 38.832rem;
 	max-height: 24rem;
