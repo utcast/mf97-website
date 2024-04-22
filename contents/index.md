@@ -11,14 +11,8 @@
 ## [企画紹介|きかくしょうかい]
 
 ---
-[title](rittaishi)
-![立体視ブースのカバー画像](/img/sponsors/rittaishi.jpg)
-## [立体視|りったいし]ブース
-[立体視|りったいし]のしくみについて[探|さぐ]りましょう。
----
----
 [title](alcohol)
-![アルコールブースのカバー画像](/img/sponsors/rittaishi.jpg)
+![アルコールブースのカバー画像](/img/sponsors/utcast.gif)
 ## アルコールブース
 アルコールの[秘密|ひみつ]に[迫|せま]ります！
 ---
@@ -27,6 +21,7 @@
 
 ---
 [title](access)
-![立体視ブースのカバー画像](/img/sponsors/rittaishi.jpg)
+![立体視ブースのカバー画像](/img/sponsors/utcast.gif)
 ## アクセス
 [会場|かいじょう]までの[行|い]き[方|かた]はこちら。
+---
