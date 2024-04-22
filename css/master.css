@@ -82,6 +82,10 @@ article span {
 	}
 }
 
+article iframe {
+	width: 100%;
+}
+
 .carousel {
 	max-width: 38.832rem;
 	max-height: 24rem;
@@ -106,4 +110,37 @@ article .picture-frame {
 article .picture {
 	aspect-ratio: 1.618;
 	max-height: 24rem;
+}
+
+#sponsors h2 {
+	font-size: 1.5rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: calc(2.25rem * var(--line-height-scale));
+}
+
+.sponsor {
+	aspect-ratio: 2.4;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	font-size: large;
+	color: var(--bs-secondary-color);
+}
+
+.sponsor img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+a.card {
+	text-decoration: none;
+}
+
+.card-img-top {
+	max-height: 120px;
+	object-fit: cover;
 }

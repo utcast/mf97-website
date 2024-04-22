@@ -39,8 +39,13 @@ const mdToHTML = function (md) {
 			return;
 		}
 
+		// card-containerを閉じる
+		else if (objectAhead == "card-container") {
+			articleHTML += "</div>";
+		}
+
 		// <p>を閉じる
-		if (objectAhead == "p") {
+		else if (objectAhead == "p") {
 			articleHTML += "</p>";
 		}
 
@@ -103,6 +108,64 @@ const mdToHTML = function (md) {
 		// rawHTMLの中身は何も解釈せず、そのまま追加する。
 		if (objectAhead == "rawHTML") {
 			articleHTML += line;
+			continue;
+		}
+
+		// 「---」〜「---」はcardとして解釈する。
+		if (line == "---") {
+			
+			if (objectAhead == "card") {
+				// Card を閉じる
+				articleHTML += "</div></a>";
+				objectAhead = "card-container";
+			}
+
+			else {
+				if (objectAhead != "card-container") {
+
+					// 前のオブジェクトを閉じる
+					closePrevious();
+	
+					// Card-containerを開く
+					articleHTML += `<div class="d-flex flex-wrap my-2">`;
+					
+				}
+
+				// Cardを開く
+				articleHTML += `<a class="card col-12 col-sm-6 col-xl-4 p-2" href="`;
+				objectAhead = "card";
+			} 
+
+			continue;
+
+		}
+
+		// cardの中身を解釈する
+		if (objectAhead == "card") {
+
+			// cardの１行目は、 [title](該当ページへのリンク) とする
+			if (line.startsWith("[title](")) {
+				let url = toFullURL(line.substring(8, line.lastIndexOf(")")));
+				articleHTML += `${url}">`;
+			}
+
+			// 画像を追加する
+			else if (/^!\[.+?\]\(.+?\)$/.test(line)) {
+				let imageAlt = line.substring(line.indexOf("![") + 2, line.lastIndexOf("]("));
+				let imageSrc = line.substring(line.lastIndexOf("](") + 2, line.lastIndexOf(")"));
+				articleHTML += `<img src="${toFullURL(imageSrc)}" class="card-img-top" alt="${imageAlt}">`;
+			}
+
+			// タイトルを追加する
+			else if (line.startsWith("## ")) {
+				articleHTML += `<div class="card-body"><h5 class="card-title">${putRuby(line.substring(3))}</h5>`;
+			}
+
+			// 本文を追加する
+			else {
+				articleHTML += `<p class="card-text">${putRuby(line)}</p>`;
+			}
+
 			continue;
 		}
 

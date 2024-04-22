@@ -1,0 +1,13 @@
+{
+	"sponsors": [
+		{
+			"name": "Sample",
+			"url": "https://www.example.com/",
+			"image": "/img/sponsors/utcast.gif"
+		},
+		{
+			"name": "Sample",
+			"url": "https://www.example.com/"
+		}
+	]
+}
