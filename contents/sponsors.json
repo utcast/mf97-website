@@ -8,6 +8,11 @@
 		{
 			"name": "Sample",
 			"url": "https://www.example.com/"
+		},
+		{
+			"name": "企業名",
+			"url": "企業のURL",
+			"image": "ロゴ"
 		}
 	]
 }
