@@ -12,19 +12,19 @@
 
 ---
 [title](light)
-![灯りブースのカバー画像](/img/sponsors/utcast.gif)
+![灯りブースのカバー画像](/img/toppage/灯り_top.png)
 ## [灯|あか]りブース
 [灯|あか]りの[秘密|ひみつ]に[迫|せま]ります！
 ---
 ---
 [title](architecture)
-![建築ブースのカバー画像](/img/sponsors/utcast.gif)
+![建築ブースのカバー画像](/img/toppage/建築_top.png)
 ## [建築|けんちく]りブース
 [建築|けんちく]の[秘密|ひみつ]に[迫|せま]ります！
 ---
 ---
 [title](alcohol)
-![アルコールブースのカバー画像](/img/sponsors/utcast.gif)
+![アルコールブースのカバー画像](/img/toppage/アルコール_top.png)
 ## アルコールブース
 アルコールの[秘密|ひみつ]に[迫|せま]ります！
 ---
