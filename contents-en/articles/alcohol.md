@@ -1,4 +1,4 @@
-# Alcohol Booth
+# Another aspect besides disinfectant -Alcohol Booth-
 
 When you hear the word alcohol, you probably think of sterilization, alcohol, and alcohol lamps. Although alcohol is so familiar to us, its scientific properties are not that well known.
 
