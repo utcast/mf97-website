@@ -1,18 +1,64 @@
 {
 	"sponsors": [
 		{
-			"name": "Sample",
-			"url": "https://www.example.com/",
-			"image": "/img/sponsors/utcast.gif"
+			"name": "西国立さま",
+			"url": "https://sohogakusha.jp/2492/",
+			"image": "/img/sponsors/社会福祉法人草萠学舎 西国立保育園_ロゴ.png"
 		},
 		{
-			"name": "Sample",
-			"url": "https://www.example.com/"
+			"name": "東罐さま",
+			"url": "https://www.tokan.co.jp",
+			"image": "/img/sponsors/東罐興業株式会社_ロゴ.png"
 		},
 		{
-			"name": "企業名",
-			"url": "企業のURL",
-			"image": "ロゴ"
+			"name": "リケジョさま",
+			"url": "https://rikejocafe.jp/",
+			"image": "/img/sponsors/リケジョカフェ_ロゴ.png"
+		}
+		{
+			"name": "少年写真さま",
+			"url": "https://www.schoolpress.co.jp",
+			"image": "/img/sponsors/少年写真.png"
+		}		
+		{
+			"name": "日販さま",
+			"url": "https://www.nippan.co.jp/",
+			"image": "/img/sponsors/日本出版販売株式会社_ロゴ.png"
+		}
+		{
+			"name": "ベネッセさま",
+			"url": "https://www.benesse.co.jp",
+			"image": "/img/sponsors/株式会社ベネッセ コーポレーション_ロゴ.pdf"
+		}
+		{
+			"name": "日本標準さま",
+			"url": "https://www.nipponhyojun.co.jp",
+			"image": "/img/sponsors/株式会社日本標準様_ロゴ.pdf"
+		}
+		{
+			"name": "WAOさま",
+			"url": "https://www.wao-corp.com",
+			"image": "/img/sponsors/株式会社ベネッセ コーポレーション_ロゴ.pdf"
+		}
+		{
+			"name": "アルファ企画",
+			"url": "http://shibuya.pandastudio.tv",
+			"image": "/img/sponsors/株式会社アルファ企画_ロゴ.png"
+		}
+		{
+			"name": "化学工業日報さま",
+			"url": "https://www.chemicaldaily.co.jp/",
+			"image": "/img/sponsors/化学工業日報ロゴ.pdf"
+		}
+		{
+			"name": "マイホムさま",
+			"url": "https://myhm.co.jp/",
+			"image": "/img/sponsors/マイホム_ロゴ.png"
+		}
+		{
+			"name": "Integrityさま",
+			"url": "https://integrity-sbp.com//",
+			"image": "/img/sponsors/Integrity_ロゴ.png"
 		}
 	]
 }
