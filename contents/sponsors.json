@@ -38,7 +38,7 @@
 		{
 			"name" :"読売さま",
 			"url":"",
-			"image" :"yomiuri_logo.jpg"
+			"image" :"/img/sponsors/yomiuri_logo.jpg"
 		},
 		{
             "name": "日販さま",
