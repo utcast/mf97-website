@@ -1,17 +1,79 @@
-# タイムテーブル
+# Timetable
 
-## ミュージアム[会場|かいじょう]
+## Science Museum
 
-ミュージアム[会場|かいじょう]ではどの[企画|きかく]も[終日|しゅうじつ]ご[覧|らん]いただけます。お[好|す]きなお[時間|じかん]にお[越|こ]しください。
+Always open.
 
-## ショー[会場|かいじょう]
+## Science Show & Science Workshop
 
-ショー[会場|かいじょう]では、5/18([土|ど]), 19([日|にち])[両日|りょうじつ]とも[以下|いか]のタイムテーブルで[企画|きかく]を[実施|じっし]します。
+```
+<table>
+	<tr>
+		<th>Time</th>
+		<th>Content</th>
+	</tr>
+	<tr>
+		<th>10:00-10:40</th>
+		<th>Science Show ①</th>
+	</tr>
+	<tr>
+		<th>11:00-11:30</th>
+		<th>Science Workshop ① (Camera Obscura)</th>
+	</tr>
+	<tr>
+		<th>12:00-12:40</th>
+		<th>Science Show ②</th>
+	</tr>
+	<tr>
+		<th>13:00-13:30</th>
+		<th>Science Workshop ② (Polarizing Kaleidoscope)</th>
+	</tr>
+	<tr>
+		<th>14:00-14:40</th>
+		<th>Science Show ③</th>
+	</tr>
+	<tr>
+		<th>15:00-15:30</th>
+		<th>Science Workshop ③ (Polarizing Kaleidoscope)</th>
+	</tr>
+	<tr>
+		<th>16:00-16:40</th>
+		<th>Science Show ④</th>
+	</tr>
+	<tr>
+		<th>17:00-17:30</th>
+		<th>Science Workshop ④ (Camera Obscura)</th>
+	</tr>
+</table>
+```
 
-![ショー会場のタイムテーブル](/img/timetable/ショー会場タイムテーブル.png)
+## Science Workshop Ticket
 
-## アトリエ[整理券配布時刻|せいりけんはいふじこく]
+Tickets are required for science workshop. Tickets will be distributed in advance in front of Room #83, Engineering Bldg. 8. 
 
-アトリエ（[工作教室|こうさくきょうしつ]）は[当日配布|とうじつはいふ]の[整理券|せいりけん]を[配布|はいふ]して[実施|じっし]します。5/18([土|ど]), 19([日|にち])[両日|りょうじつ]とも[以下|いか]の[時刻|じこく]に[整理券|せいりけん]の[配布|はいふ]を[開始|かいし]します。ただし、[混雑状況|こんざつじょうきょう]によっては[整理券|せいりけん]の[配布時間|はいふじかん]を[早|はや]める[場合|ばあい]がございますので、ご[了承|りょうしょう]ください。
+```
+<table>
+	<tr>
+		<th>Workshop</th>
+		<th>Ticket Distribution</th>
+	</tr>
+	<tr>
+		<th>①</th>
+		<th>9:30-</th>
+	</tr>
+	<tr>
+		<th>②</th>
+		<th>11:15-</th>
+	</tr>
+	<tr>
+		<th>③</th>
+		<th>13:15-</th>
+	</tr>
+	<tr>
+		<th>④</th>
+		<th>15:15-</th>
+	</tr>
+</table>	    
+```
 
 ![アトリエ整理券配布時刻](/img/timetable/整理券タイムテーブル.png)
