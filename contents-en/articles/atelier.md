@@ -1,23 +1,20 @@
-# アトリエ（[工作教室|こうさくきょうしつ]）
+# Science Workshop
 
-アトリエ（[工作教室|こうさくきょうしつ]）はショー[会場|かいじょう]（[工学部|こうがくぶ]8[号館|ごうかん]83[号講義室|ごうこうぎしつ]）で[実施|じっし]します。[東大|とうだい]CASTのお[兄|にい]さんお[姉|ねえ]さんと[一緒|いっしょ]に[楽|たの]しく[工作|こうさく]しましょう！[工作|こうさく]したものはお[家|うち]に[帰|かえ]ってからも[遊|あそ]んでみてください。
+## Camera Obscura
 
-## カメラ・オブスキュラ
-[周|まわ]りの[景色|けしき]が[上下反対|じょうげはんたい]に[見|み]えるカメラの[模型|もけい]を[工作|こうさく]します。カメラにはレンズとフィルムが[使|つか]われています。レンズは[光|ひかり]を「[屈折|くっせつ]」させることで[光|ひかり]を[集|あつ]めます。フィルムに[光|ひかり]が[集|あつ]まるようにレンズの[位置|いち]を[調整|ちょうせい]すると、フィルムに[周|まわ]りの[景色|けしき]が[映|うつ]るようになります。
+Craft a model of a camera in which the view around you appears to be upside down. Cameras use lenses and film. The lens collects light by "refracting" it. By adjusting the position of the lens so that the light is focused on the film, the film will reflect the surrounding scenery.
 
-カメラの[模型|もけい]を[作|つく]りながら、「[光|ひかり]の[屈折|くっせつ]」についてくわしくなろう！
+Let's learn more about "refraction of light" while making a model of a camera!
 
-![カメラ・オブスキュラ](/img/atelier/カメラ・オブスキュラ外観.jpeg)
-![外の景色が上下反転！](/img/atelier/カメラ・オブスキュラ景色.jpeg)
+![](/img/atelier/カメラ・オブスキュラ外観.jpeg)
+![](/img/atelier/カメラ・オブスキュラ景色.jpeg)
 
-## くるキラ[万華鏡|まんげきょう]
-くるくる[回|まわ]すと[様々|さまざま]に[色|いろ]が[変|か]わっていく[万華鏡|まんげきょう]を[工作|こうさく]します。[黒|くろ]い[板|いた]の[間|あいだ]にセロハンテープを[貼|は]った[透明|とうめい]な[板|いた]を[挟|はさ]むと、あら[不思議|ふしぎ]！カラフルな[模様|もよう]が[見|み]えるのです。[実|じつ]は、この[黒|くろ]い[板|いた]は[偏光板|へんこうばん]と[言|い]って、ある[向|む]きの[光|ひかり]だけを[通|とお]す[働|はたら]きがあります。セロハンテープは[色|いろ]ごとに[光|ひかり]の[向|む]きを[曲|ま]げる[働|はたら]きがあるので、カラフルに[見|み]えるのです。
+## Polarizer Kaleidoscope
 
-[万華鏡|まんげきょう]を[作|つく]って、カラフルな[世界|せかい]を[見|み]てみませんか？
+This class will create a kaleidoscope that changes color as you spin it around. Put a transparent board with cellophane tape between two black boards! You can see colorful patterns. The black plate is actually a polarizing plate, which allows light to pass through only in a certain direction. The cellophane tape bends the direction of light for each color, making it appear more colorful.
 
-![中をのぞくと……？](/img/atelier/くるキラ万華鏡.jpeg)
+Why not make a kaleidoscope and see the colorful world?
 
+![](/img/atelier/くるキラ万華鏡.jpeg)
 
-
-
-
+Translated with DeepL.com (free version)
