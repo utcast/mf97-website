@@ -1,5 +1,5 @@
 # Another aspect besides disinfectant -Alcohol Booth-Another aspect besides disinfectant -Alcohol Booth-
-![発酵の実験](/img/alcohol/alcohol_bunsi.jpg)
+![](/img/alcohol/alcohol_bunsi.jpg)
 
 In this booth, we are going to explain to you the various chemical properties of alcohol.
 
@@ -17,8 +17,10 @@ In general, there are two types of pens: water-based and oil-based. Since water 
 
 ## Protein and alcohol
 
-![卵白の実験](/img/alcohol/alcohol_ranpaku.jpg)
+![](/img/alcohol/alcohol_ranpaku.jpg)
 
 When alcohol is added to egg whites, a white haze-like substance is produced. This is due to a change in the structure of the protein contained in the egg whites. Originally, proteins are in the form of chains, but heating or adding alcohol to them can break these chains. This is called "denaturation" of proteins. Similar to the pen-and-alcohol experiment, alcohol's ability to break protein chains is due to the fact that alcohol molecules have a structure that is compatible with water.
 
 Proteins are found in all living things on earth, including us. Alcohol is used for sanitization because it can denature the surface membranes of bacteria and viruses, killing or detoxifying them.
+
+![](/img/alcohol/image1.png)
