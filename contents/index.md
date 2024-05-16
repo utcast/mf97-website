@@ -50,7 +50,14 @@ CASTのお[兄|にい]さん、お[姉|ねえ]さんと[一緒|いっしょ]に[
 [会場|かいじょう]までの[行|い]き[方|かた]はこちら。
 ---
 
-## 公式パンフレット
+## アトリエアトリエ[整理券|せいりけん]　[残数状況|ざんすうじょうきょう]
+
+---
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTdG8YaRLg1z6XoPRbUUU4geb52UJyzwxc35pQ19jZb0k8W-qPZbbuWCiDTw4Dqej89CkvlG6dR0jJi/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+---
+
+
+## [公式|こうしき]パンフレット
 
 ---
 [title](pamphlet)
