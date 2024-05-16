@@ -1,6 +1,6 @@
 # [灯|あか]りの[歴史|れきし]を[照|て]らしだせ！[変|か]わりゆく[発光|はっこう]の[仕組|しく]み
-![フィラメントを発光させる様子](/img/light/light_carousel_1.jpg)
-![LEDキューブを発光させる様子](/img/light/light_carousel_2.png)
+![プラズマボールの様子](/img/light/light_carousel_3.png)
+![ライトたちの様子](/img/light/light_carousel_4.png)
 
 
 [人類|じんるい]の[発展|はってん]に[不可欠|ふかけつ]だったものとはなんでしょうか。
