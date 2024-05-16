@@ -75,5 +75,3 @@ Tickets are required for science workshop. Tickets will be distributed in advanc
 	</tr>
 </table>	    
 ```
-
-![アトリエ整理券配布時刻](/img/timetable/整理券タイムテーブル.png)
