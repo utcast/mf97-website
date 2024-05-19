@@ -2,6 +2,8 @@
 
 ## ショー[映像|えいぞう]
 
+[気象|きしょう]ショーの[録画|ろくが]を[公開|こうかい]しました。こちらからご[覧|らん]ください！
+
 ```
 <iframe width="878" height="494" src="https://www.youtube.com/embed/kzNmbGbJgo4" title="【第97回五月祭】なるほど体感！サイエンスショー『風を感じて！空を見上げて！気象のしくみショー』" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 ```
