@@ -1,5 +1,11 @@
 # [風|かぜ]を[感|かん]じて！[空|そら]を[見上|みあ]げて！[気象|きしょう]の[仕組|しく]みショー
 
+## ショー[映像|えいぞう]
+
+```
+<iframe width="878" height="494" src="https://www.youtube.com/embed/kzNmbGbJgo4" title="【第97回五月祭】なるほど体感！サイエンスショー『風を感じて！空を見上げて！気象のしくみショー』" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+```
+
 ## [風|かぜ]
 
 [外|そと]を[歩|ある]けば[吹|ふ]いている[風|かぜ]。とても[身近|みぢか]な[気象現象|きしょうげんしょう]ですが、[皆|みな]さんはその[原理|げんり]をご[存|ぞん]じでしょうか？
