@@ -1,4 +1,4 @@
-# UT-CAST MayFes 2024
+# UT-CAST KomabaFes 2024
 
 ## News
 
