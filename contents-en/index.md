@@ -1,8 +1,8 @@
-# UT-CAST MayFes 2024
+# UT-CAST KomabaFes 2024
 
 ## News
 
-May Festival 2024 will be held on 2024/5/18 (Sat.) - 19 (Sun.) at the Hongo Campus of the University of Tokyo.
+Komaba Festival 2024 will be held on 2024/11/22 (Fri.) - 24 (Sun.) at the Komaba Campus of the University of Tokyo.
 
 At Todai CAST, there will be a booth exhibition, "Science Museum," where you can see and enjoy experiments on various themes up close, and a large-scale experiment "Science Show," as well as various exhibitions 
 
